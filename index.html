@@ -1,19 +1,141 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#111111">
-<title>Штурм НН — мини-футбольная команда</title>
+<title>ШТУРМ НН — Футзальный клуб</title>
 <style>
-:root{--bg:#101114;--panel:#1c1d22;--line:#34353a;--orange:#ff851b;--text:#f8f8f8;--muted:#b7b7bd}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif}a{color:inherit}header{background:linear-gradient(130deg,#171717 15%,#442006 100%);border-bottom:3px solid var(--orange)}.wrap{max-width:1060px;margin:auto;padding:0 18px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:23px 0}.brand{display:flex;align-items:center;gap:13px}.crest{display:grid;place-items:center;width:62px;height:62px;background:#ff851b;color:#171717;clip-path:polygon(50% 0,96% 17%,87% 74%,50% 100%,13% 74%,4% 17%);font-size:30px;font-weight:900}.brand strong{display:block;font-size:26px;letter-spacing:.04em}.brand small{display:block;color:#e6c6a8}nav{display:flex;gap:16px;flex-wrap:wrap}nav a{text-decoration:none;font-size:14px;font-weight:700}nav a:hover{color:var(--orange)}.hero{padding:45px 0 52px}.eyebrow{color:var(--orange);font-size:13px;text-transform:uppercase;letter-spacing:.15em;font-weight:800}.hero h1{font-size:clamp(32px,6vw,62px);line-height:1.06;margin:12px 0}.hero p{max-width:600px;color:#e3d9d2;margin:0}.section{padding:30px 0 10px}.section h2{font-size:25px;margin:0 0 18px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:20px}.card h3{margin:0 0 14px;font-size:17px}.muted,.date{color:var(--muted);font-size:13px}.date{margin-bottom:10px}.match{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;border-top:1px solid var(--line);padding:15px 0}.match:first-of-type{border-top:0}.match .right{text-align:right}.score{font-size:23px;font-weight:900;white-space:nowrap;color:var(--orange)}.pending{font-size:17px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{background:var(--panel);border:1px solid var(--line);padding:20px 10px;border-radius:14px;text-align:center}.stat strong{display:block;font-size:31px;color:var(--orange)}.stat span{font-size:13px;color:var(--muted)}.rank{display:flex;align-items:center;gap:20px}.rank strong{font-size:64px;color:var(--orange);line-height:1}.rank p{margin:0}.tag{display:inline-block;color:#111;background:var(--orange);padding:3px 9px;border-radius:100px;font-size:12px;font-weight:800}.note{font-size:13px;color:var(--muted);margin-top:15px}.link{color:var(--orange);text-underline-offset:3px}footer{border-top:1px solid var(--line);margin-top:40px;padding:25px 0 40px;color:var(--muted);font-size:13px}@media(max-width:740px){.top{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.brand strong{font-size:22px}.hero{padding:32px 0}.match{font-size:14px}.score{font-size:20px}}
+:root{--orange:#ff7900;--dark:#101010;--card:#1c1c1c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--dark);color:#fff;font-family:Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.hero{background:linear-gradient(145deg,#171717 25%,#733000 100%);padding:24px 18px 42px;position:relative;overflow:hidden}
+.hero:after{content:"ШТУРМ";position:absolute;bottom:-25px;right:-15px;font-size:95px;font-weight:900;color:#ffffff09;pointer-events:none}
+.brand{font-size:15px;font-weight:900;letter-spacing:3px;color:var(--orange)}
+.hero h1{font-size:clamp(55px,15vw,110px);line-height:.85;margin:55px 0 18px;font-weight:900;letter-spacing:-4px}
+.hero h1 span{color:var(--orange)}
+.hero p{font-size:15px;color:#ddd;letter-spacing:2px}
+.tag{display:inline-block;background:var(--orange);color:#111;padding:8px 13px;font-weight:900;transform:skew(-8deg)}
+nav{display:flex;gap:8px;overflow-x:auto;padding:14px;background:#171717;position:sticky;top:0;z-index:10}
+nav a{white-space:nowrap;background:#292929;padding:11px 15px;border-radius:6px;font-size:13px;font-weight:bold}
+main{max-width:1000px;margin:auto;padding:15px}
+h2{font-size:29px;letter-spacing:-1px;margin:30px 0 16px;text-transform:uppercase}
+h2 span{color:var(--orange)}
+.card{background:var(--card);border:1px solid #333;border-radius:14px;padding:20px;margin-bottom:15px}
+.label{font-size:12px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.teams{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:25px 0;text-align:center}
+.team{flex:1;font-size:15px;font-weight:900;overflow-wrap:anywhere}
+.score{font-size:clamp(35px,10vw,65px);font-weight:900;white-space:nowrap;color:var(--orange)}
+.meta{color:#aaa;font-size:13px}
+.next{border-left:5px solid var(--orange)}
+.match{display:flex;justify-content:space-between;gap:10px;padding:15px 0;border-bottom:1px solid #333;align-items:center}
+.match:last-child{border-bottom:0}
+.match strong{color:var(--orange);white-space:nowrap;font-size:21px}
+.match small{display:block;color:#aaa;margin-top:6px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:#272727;border-radius:10px;padding:18px 8px;text-align:center}
+.stat b{display:block;font-size:30px;color:var(--orange)}
+.stat small{font-size:11px;color:#bbb}
+.position{text-align:center;padding:24px;background:linear-gradient(135deg,#ff7900,#c34a00);border-radius:12px;color:#111;margin-bottom:15px}
+.position b{display:block;font-size:65px;font-weight:900;line-height:1}
+.position span{font-size:13px;font-weight:bold}
+.btn{display:block;text-align:center;background:var(--orange);color:#111;padding:15px;border-radius:9px;font-weight:900;margin-top:18px}
+footer{text-align:center;padding:35px 15px;color:#888;font-size:13px}
+@media(min-width:700px){.hero{padding:40px 8% 65px}.stats{grid-template-columns:repeat(6,1fr)}}
 </style>
 </head>
 <body>
-<header><div class="wrap"><div class="top"><div class="brand"><div class="crest" aria-hidden="true">⚽</div><div><strong>ШТУРМ НН</strong><small>Мини-футбольная команда · Нижний Новгород</small></div></div><nav><a href="#results">Результаты</a><a href="#calendar">Календарь</a><a href="#table">Таблица</a><a href="#statistics">Статистика</a></nav></div><div class="hero"><div class="eyebrow">Сезон 2026/2027 · II лига · группа А</div><h1>Играем за<br>«Штурм НН»</h1><p>Матчи, расписание и достижения команды — в одном месте.</p></div></div></header>
-<main class="wrap">
-<section class="section" id="results"><h2>Последние матчи</h2><div class="grid"><div class="card"><h3>Чемпионат · II лига</h3><div class="date">14 ноября 2026</div><div class="match"><span>YAZAKI VOLGA</span><span class="score">3 : 5</span><span class="right"><b>Штурм НН</b></span></div><div class="date">7 ноября 2026</div><div class="match"><span>Мобильный технохранитель</span><span class="score">8 : 7</span><span class="right"><b>Штурм НН</b></span></div><div class="date">1 ноября 2026</div><div class="match"><span><b>Штурм НН</b></span><span class="score">3 : 6</span><span class="right">RWB</span></div></div><div class="card"><h3>Кубок открытия · 2026/27</h3><div class="date">11 октября 2026</div><div class="match"><span>Резерв</span><span class="score">8 : 4</span><span class="right"><b>Штурм НН</b></span></div><div class="date">4 октября 2026</div><div class="match"><span><b>Штурм НН</b></span><span class="score">4 : 5</span><span class="right">ТЕХНОЛОГИЯ ПРО</span></div><div class="date">27 сентября 2026</div><div class="match"><span><b>Штурм НН</b></span><span class="score">9 : 5</span><span class="right">Friend's team</span></div></div></div></section>
-<section class="section" id="calendar"><h2>Ближайшие матчи</h2><div class="grid"><div class="card"><span class="tag">21 ноября · 18:30</span><div class="match"><span>РМС</span><span class="score pending">— : —</span><span class="right"><b>Штурм НН</b></span></div><div class="muted">II лига · группа А</div></div><div class="card"><span class="tag">29 ноября · 18:30</span><div class="match"><span><b>Штурм НН</b></span><span class="score pending">— : —</span><span class="right">ЮНИОН НН</span></div><div class="muted">II лига · группа А</div></div></div><p class="note">Даты и результаты указаны по состоянию на 16 ноября 2026 года. Проверяйте изменения в <a class="link" href="https://futsal-nn.ru/team/1059741/calendar" target="_blank" rel="noopener noreferrer">официальном календаре</a>.</p></section>
-<section class="section" id="table"><h2>Положение в чемпионате</h2><div class="card rank"><strong>15</strong><p><b>место в группе А</b><br>5 матчей · 4 очка<br><span class="muted">II лига · сезон 2026/27</span></p></div><p class="note">Полную турнирную таблицу можно посмотреть на <a class="link" href="https://futsal-nn.ru/team/1059741" target="_blank" rel="noopener noreferrer">сайте Futsal-NN</a>.</p></section>
-<section class="section" id="statistics"><h2>Статистика команды</h2><h3>За всё время</h3><div class="stats"><div class="stat"><strong>227</strong><span>матчей</span></div><div class="stat"><strong>121</strong><span>победа</span></div><div class="stat"><strong>18</strong><span>ничьих</span></div><div class="stat"><strong>988</strong><span>забитых голов</span></div></div><h3>Сезон 2026/27 · все турниры</h3><div class="stats"><div class="stat"><strong>11</strong><span>матчей</span></div><div class="stat"><strong>5</strong><span>побед</span></div><div class="stat"><strong>58</strong><span>забитых голов</span></div><div class="stat"><strong>59</strong><span>пропущенных голов</span></div></div><p class="note">В статистике сезона учтены все соревнования; в таблице II лиги — только матчи чемпионата.</p></section>
-</main><footer><div class="wrap">Штурм НН · Неофициальная страница команды. Данные: <a class="link" href="https://futsal-nn.ru/team/1059741" target="_blank" rel="noopener noreferrer">Futsal-NN</a>. Снимок данных: 16.11.2026. Автоматическое обновление пока не подключено.</div></footer>
-</body></html>
+<header class="hero">
+  <div class="brand">⚡ ФУТЗАЛЬНЫЙ КЛУБ</div>
+  <h1>ШТУРМ<br><span>НН.</span></h1>
+  <div class="tag">ИГРАЕМ ДО КОНЦА</div>
+  <p>НИЖНИЙ НОВГОРОД · СЕЗОН 2026/27</p>
+</header>
+
+<nav>
+  <a href="#last">РЕЗУЛЬТАТЫ</a>
+  <a href="#next">МАТЧИ</a>
+  <a href="#table">ТАБЛИЦА</a>
+  <a href="#stats">СТАТИСТИКА</a>
+</nav>
+
+<main>
+<section id="last">
+  <h2>ПОСЛЕДНИЙ <span>МАТЧ</span></h2>
+  <div class="card">
+    <div class="label">II ЛИГА · ГРУППА А</div>
+    <div class="teams">
+      <div class="team">YAZAKI<br>VOLGA</div>
+      <div class="score">3:5</div>
+      <div class="team">ШТУРМ<br>НН</div>
+    </div>
+    <div class="meta">14 ноября 2026 · Матч завершён</div>
+  </div>
+</section>
+
+<section id="next">
+  <h2>СЛЕДУЮЩИЙ <span>МАТЧ</span></h2>
+  <div class="card next">
+    <div class="label">21 НОЯБРЯ · 18:30</div>
+    <div class="teams">
+      <div class="team">РМС</div>
+      <div class="score">VS</div>
+      <div class="team">ШТУРМ НН</div>
+    </div>
+    <div class="meta">II Лига · Группа А</div>
+  </div>
+
+  <h2>КАЛЕНДАРЬ <span>ИГР</span></h2>
+  <div class="card">
+    <div class="match"><div>Бенфика — Штурм НН<small>18 октября</small></div><strong>5:5</strong></div>
+    <div class="match"><div>Резерв — Штурм НН<small>24 октября</small></div><strong>10:1</strong></div>
+    <div class="match"><div>Штурм НН — RWB<small>1 ноября</small></div><strong>3:6</strong></div>
+    <div class="match"><div>Мобильный технохранитель — Штурм НН<small>7 ноября</small></div><strong>8:7</strong></div>
+    <div class="match"><div>YAZAKI VOLGA — Штурм НН<small>14 ноября</small></div><strong>3:5</strong></div>
+    <div class="match"><div>РМС — Штурм НН<small>21 ноября · 18:30</small></div><strong>—</strong></div>
+    <div class="match"><div>Штурм НН — ЮНИОН НН<small>29 ноября · 18:30</small></div><strong>—</strong></div>
+  </div>
+  <a class="btn" href="https://futsal-nn.ru/team/1059741/calendar">ПОЛНЫЙ КАЛЕНДАРЬ ↗</a>
+</section>
+
+<section id="table">
+  <h2>ТУРНИРНАЯ <span>ТАБЛИЦА</span></h2>
+  <div class="position">
+    <b>15</b>
+    <span>МЕСТО В ГРУППЕ А</span>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>5</b><small>ИГРЫ</small></div>
+    <div class="stat"><b>4</b><small>ОЧКИ</small></div>
+    <div class="stat"><b>1</b><small>ПОБЕДА</small></div>
+    <div class="stat"><b>1</b><small>НИЧЬЯ</small></div>
+    <div class="stat"><b>3</b><small>ПОРАЖЕНИЯ</small></div>
+    <div class="stat"><b>−11</b><small>РАЗНИЦА</small></div>
+  </div>
+</section>
+
+<section id="stats">
+  <h2>СТАТИСТИКА <span>КЛУБА</span></h2>
+  <p class="meta">Все соревнования · Сезон 2026/27</p>
+  <div class="stats">
+    <div class="stat"><b>11</b><small>МАТЧЕЙ</small></div>
+    <div class="stat"><b>5</b><small>ПОБЕД</small></div>
+    <div class="stat"><b>1</b><small>НИЧЬЯ</small></div>
+    <div class="stat"><b>5</b><small>ПОРАЖЕНИЙ</small></div>
+    <div class="stat"><b>58</b><small>ЗАБИТО</small></div>
+    <div class="stat"><b>59</b><small>ПРОПУЩЕНО</small></div>
+  </div>
+  <a class="btn" href="https://futsal-nn.ru/team/1059741">СТАТИСТИКА НА FUTSAL-NN ↗</a>
+</section>
+</main>
+
+<footer>
+  <strong>ШТУРМ НН ⚡</strong>
+  <p>Нижний Новгород · Футзал</p>
+  <p>Данные по состоянию на 16.11.2026</p>
+</footer>
+</body>
+</html>
